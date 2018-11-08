@@ -1,0 +1,11 @@
+<div class="main">
+  <p>Manager User</p>
+  <div class="list-items">
+    <div class="item" *ngFor="let item of users">
+      <input type="checkbox">
+      <label for="">{{item.fname + " " + item.lname}}</label>
+      <span *ngIf="!item.state" (click)="block_User(item.id)"><i class="fa fa-unlock"></i></span>
+      <span *ngIf="item.state" (click)="Unblock_User(item.id)"><i class="fa fa-lock" aria-hidden="true"></i></span>
+    </div>
+  </div>
+</div>

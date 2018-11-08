@@ -1,0 +1,136 @@
+<div class="content">
+  <div class="fix-lex col-xs-10 col-sm-10 col-md-6 col-lg-4">
+    <div class="row">
+      <div class="form">
+        <div class="tab-content">
+          <div id="signup">
+            <h1 *ngIf="isAdmin">Tạo tài khoản người dùng</h1>
+            <h1 *ngIf="isUpdate">Cập nhật tài khoản</h1>
+            <form *ngIf="isAdmin">
+              <div class="top-row">
+                <div class="field-wrap">
+                  <label [ngClass]="{active: firstName.value, highlight: firstName.value}">
+                    First Name
+                    <span class="req">*</span>
+                  </label>
+                  <input type="text" [formControl]="firstName" required autocomplete="off" />
+                </div>
+
+                <div class="field-wrap">
+                  <label [ngClass]="{active: lastName.value, highlight: lastName.value}">
+                    Last Name
+                    <span class="req">*</span>
+                  </label>
+                  <input type="text" [formControl]="lastName" required autocomplete="off" />
+                </div>
+              </div>
+              <div class="field-wrap">
+                <label [ngClass]="{active: email.value, highlight: email.value}">
+                  Email Address
+                  <span class="req">*</span>
+                </label>
+                <input type="email" [formControl]="email" required autocomplete="off" />
+              </div>
+              <div class="field-wrap">
+                <label [ngClass]="{active: password.value, highlight: password.value}">
+                  Set A Password
+                  <span class="req">*</span>
+                </label>
+                <input type="password" [formControl]="password" required autocomplete="off" />
+              </div>
+              <button type="submit" class="button button-block">Register</button>
+            </form>
+            <form *ngIf="isUpdate">
+              <div class="top-row">
+                <div class="field-wrap">
+                  <label [ngClass]="{active: firstName.value, highlight: firstName.value}" translate>
+                    FirstName
+                    <span class="req">*</span>
+                  </label>
+                  <input type="text" [formControl]="firstName" required autocomplete="off" />
+                </div>
+  
+                <div class="field-wrap">
+                  <label [ngClass]="{active: lastName.value, highlight: lastName.value}" translate>
+                    LastName
+                    <span class="req">*</span>
+                  </label>
+                  <input type="text" [formControl]="lastName" required autocomplete="off" />
+                </div>
+              </div>
+              <div class="top-row">
+                <div class="field-wrap">
+                  <label [ngClass]="{active: phoneNumber.value, highlight: phoneNumber.value}" translate>
+                    Phone
+                    <span class="req">*</span>
+                  </label>
+                  <input type="text" [formControl]="phoneNumber" required autocomplete="off" />
+                </div>
+  
+                <div class="field-wrap">
+                  <label [ngClass]="{active: companyName.value, highlight: companyName.value}" translate>
+                      Company
+                    <span class="req">*</span>
+                  </label>
+                  <input type="text" [formControl]="companyName" required autocomplete="off" />
+                </div>
+              </div>
+              <div class="field-wrap">
+                <label [ngClass]="{active: password.value, highlight: password.value}" translate>
+                    Password
+                  <span class="req">*</span>
+                </label>
+                <input type="password" [formControl]="password" required autocomplete="off" />
+              </div>
+              <p class="forgot">
+                <a (click)="changeAdmin()" *ngIf="user.roleId === 1" translate>Chuyển đổi tài khoản</a>
+              </p>
+              <button type="submit" class="button button-block" translate>Update</button>
+
+            </form>
+            <form *ngIf="isChangeAdmin" (ngSubmit)="send_Email_Update()">
+              <div class="field-wrap">
+                <label [ngClass]="{active: email.value, highlight: email.value}">
+                  Email Address
+                  <span class="req">*</span>
+                </label>
+                <input type="email" [formControl]="email" required autocomplete="off" />
+              </div>
+              <p class="forgot">
+                <a (click)="backToMenu()" translate>Quay lại</a>
+              </p>
+              <button type="submit" class="button button-block" translate>Yêu cầu</button>
+            </form>
+            <form *ngIf="isCode" (ngSubmit)="verify_Code()">
+                <div class="field-wrap">
+                    <label [ngClass]="{active: email.value, highlight: email.value}">
+                      New Admin
+                      <span class="req">*</span>
+                    </label>
+                    <input type="text" [formControl]="email" required autocomplete="off" />
+                  </div>
+              <div class="field-wrap">
+                <label [ngClass]="{active: myCode.value, highlight: myCode.value}">
+                  Old Admin Code
+                  <span class="req">*</span>
+                </label>
+                <input type="text" [formControl]="myCode" required autocomplete="off" />
+              </div>
+              <div class="field-wrap">
+                <label [ngClass]="{active: yourCode.value, highlight: yourCode.value}">
+                  New Admin Code
+                  <span class="req">*</span>
+                </label>
+                <input type="text" [formControl]="yourCode" required autocomplete="off" />
+              </div>
+              <p class="forgot">
+                <a (click)="backToMenu()" translate>Quay lại</a>
+              </p>
+              <button type="submit" class="button button-block" translate>Xác nhận</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
